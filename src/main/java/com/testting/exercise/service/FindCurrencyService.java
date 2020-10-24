@@ -15,32 +15,32 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FindCurrencyService {
 
-	/**
-	 * Rest.
-	 */
-	private final RestTemplate restTemplate;
+    /**
+     * Rest.
+     */
+    private final RestTemplate restTemplate;
 
-	/**
-	 * FindRateService.
-	 * 
-	 * @param restTemplateBuilder - restTemplateBuilder
-	 */
-	public FindCurrencyService(final RestTemplateBuilder restTemplateBuilder) {
-		this.restTemplate = restTemplateBuilder.build();
-	}
+    /**
+     * FindRateService.
+     * 
+     * @param restTemplateBuilder - restTemplateBuilder
+     */
+    public FindCurrencyService(final RestTemplateBuilder restTemplateBuilder) {
+        this.restTemplate = restTemplateBuilder.build();
+    }
 
-	/**
-	 * findRate.
-	 * 
-	 * @param url  - url
-	 * @param rate
-	 * @return CompletableFuture<String>
-	 */
-	@Async
-	public CompletableFuture<String> findRate(final String url, final String currency) {
-		String results = restTemplate.getForObject(url, String.class);
-		Double val = JsonPath.parse(results).read("$.rates['" + currency + "']");
-		return CompletableFuture.completedFuture(val.toString());
-	}
-	
+    /**
+     * findRate.
+     * 
+     * @param url  - url
+     * @param rate
+     * @return CompletableFuture<String>
+     */
+    @Async
+    public CompletableFuture<String> findRate(final String url, final String currency) {
+        String results = restTemplate.getForObject(url, String.class);
+        Double val = JsonPath.parse(results).read("$.rates['" + currency + "']");
+        return CompletableFuture.completedFuture(val.toString());
+    }
+
 }

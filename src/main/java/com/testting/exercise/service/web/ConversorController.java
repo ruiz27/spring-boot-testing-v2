@@ -15,27 +15,28 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ConversorController {
 
-	/**
-	 * Conversor service to inject.
-	 */
-	private final ConversorService conversorService;
+    /**
+     * Conversor service to inject.
+     */
+    private final ConversorService conversorService;
 
-	/**
-	 * default constructor.
-	 * @param conversorService
-	 */
-	public ConversorController(final ConversorService conversorService) {
-		this.conversorService = conversorService;
-	}
+    /**
+     * default constructor.
+     * 
+     * @param conversorService
+     */
+    public ConversorController(final ConversorService conversorService) {
+        this.conversorService = conversorService;
+    }
 
-
-	/**
-	 *EUR-USD Conversor using the best Rate.
-	 *@param amount
-	 *@return String
-	 */
-	@GetMapping("/convert/eur/usd/{amount}")
-	public String convert(@PathVariable final String amount) {
-		return conversorService.findBestRateEURForUSD(amount);
-	}
+    /**
+     * EUR-USD Conversor using the best Rate.
+     * 
+     * @param amount
+     * @return String
+     */
+    @GetMapping("/convert/eur/usd/{amount}")
+    public String convert(@PathVariable final String amount) {
+        return conversorService.findBestRateEURForUSD(amount);
+    }
 }
