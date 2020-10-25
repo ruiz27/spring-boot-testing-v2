@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,10 +17,14 @@ public class ConversorServiceImpl implements ConversorService {
 
     private final FindCurrencyService findCurrencyService;
 
-    private final String frankfurter = "https://api.frankfurter.app/latest";
-    private final String ratesapi = "https://api.ratesapi.io/api/latest";
-    private final String exchangeratesapi = "https://api.exchangeratesapi.io/latest";
-    private final String USD = "USD";
+    @Value("${api.frankfurter}")
+    private String frankfurter;
+    @Value("${api.ratesapi}")
+    private String ratesapi;
+    @Value("${api.exchangeratesapi}")
+    private String exchangeratesapi;
+    @Value("${currency.origin}")
+    private String USD;
 
     public ConversorServiceImpl(final FindCurrencyService finalRateService) {
         this.findCurrencyService = finalRateService;
