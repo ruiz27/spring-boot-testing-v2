@@ -3,6 +3,7 @@ package com.testting.exercise.service;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,8 +43,8 @@ public class ConversorServiceTest {
     }
 
     @Test
-    public void when_test_ok() {
-        System.out.println(service.findBestRateEURForUSD("1"));
+    public void given_exchangeApiURL_findMax_rate() {
+        assertEquals("1.1856", service.findBestRateEURForUSD("1"));
     }
 
 }
