@@ -13,20 +13,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.github.tomakehurst.wiremock.WireMockServer;
 
 /**
- * 
  * Conversor service test.
- * 
  * @author sergioruizcombariza
  *
  */
 @SpringBootTest
 public class ConversorServiceTest {
 
+    /**
+     * Wiremock server.
+     */
     private WireMockServer wireMockServer;
 
+    /**
+     * Object converser service.
+     */
     @Autowired
     private ConversorService service;
 
+    /**
+     * Initialize wiremock server.
+     */
     @BeforeEach
     public void setup() {
         wireMockServer = new WireMockServer(8989);
@@ -42,6 +49,9 @@ public class ConversorServiceTest {
                                 + "\"RUB\":92.02,\"SEK\":10.3805,\"SGD\":1.6036,\"THB\":36.965,\"TRY\":9.3301,\"USD\":1.181,\"ZAR\":19.5245}}")));
     }
 
+    /**
+     * Test exchange api find max rate.
+     */
     @Test
     public void given_exchangeApiURL_findMax_rate() {
         assertEquals("1.1856", service.findBestRateEURForUSD("1"));

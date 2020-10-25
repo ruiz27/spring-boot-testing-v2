@@ -22,7 +22,6 @@ public class FindCurrencyService {
 
     /**
      * FindRateService.
-     * 
      * @param restTemplateBuilder - restTemplateBuilder
      */
     public FindCurrencyService(final RestTemplateBuilder restTemplateBuilder) {
@@ -31,15 +30,16 @@ public class FindCurrencyService {
 
     /**
      * findRate.
-     * 
      * @param url  - url
-     * @param rate
+     * @param currency
      * @return CompletableFuture<String>
      */
     @Async
-    public CompletableFuture<String> findRate(final String url, final String currency) {
+    public CompletableFuture<String> findRate(final String url,
+            final String currency) {
         String results = restTemplate.getForObject(url, String.class);
-        Double val = JsonPath.parse(results).read("$.rates['" + currency + "']");
+        Double val = JsonPath.parse(results)
+                .read("$.rates['" + currency + "']");
         return CompletableFuture.completedFuture(val.toString());
     }
 

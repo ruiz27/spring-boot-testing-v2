@@ -18,25 +18,23 @@ public class ConversorController {
     /**
      * Conversor service to inject.
      */
-    private final ConversorService conversorService;
+    private final ConversorService iconversorService;
 
     /**
      * default constructor.
-     * 
      * @param conversorService
      */
     public ConversorController(final ConversorService conversorService) {
-        this.conversorService = conversorService;
+        this.iconversorService = conversorService;
     }
 
     /**
      * EUR-USD Conversor using the best Rate.
-     * 
      * @param amount
      * @return String
      */
     @GetMapping("/convert/eur/usd/{amount}")
     public String convert(@PathVariable final String amount) {
-        return conversorService.findBestRateEURForUSD(amount);
+        return iconversorService.findBestRateEURForUSD(amount);
     }
 }
