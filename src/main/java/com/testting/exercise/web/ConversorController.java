@@ -1,7 +1,7 @@
 /**
  *Web
  */
-package com.testting.exercise.service.web;
+package com.testting.exercise.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
