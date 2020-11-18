@@ -54,7 +54,7 @@ public class ConversorServiceTest {
      */
     @Test
     public void given_exchangeApiURL_findMax_rate() {
-        assertEquals("1.1856", service.findBestRateEURForUSD("1"));
+        assertEquals("1.1882", service.findBestRateEURForUSD("1"));
     }
 
 }
