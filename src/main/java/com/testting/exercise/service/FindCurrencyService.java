@@ -34,7 +34,6 @@ public class FindCurrencyService {
      * @param currency
      * @return CompletableFuture<String>
      */
-    @Async
     public CompletableFuture<String> findRate(final String url,
             final String currency) {
         String results = restTemplate.getForObject(url, String.class);
