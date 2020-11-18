@@ -85,7 +85,7 @@ public class ConversorServiceImpl implements ConversorService {
      */
     private CompletableFuture<String> createCallFuture(final String url,
             final String currency) {
-
+    	
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return findCurrencyService.findRate(url, currency).get();
